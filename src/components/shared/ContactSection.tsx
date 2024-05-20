@@ -21,14 +21,14 @@ const ContactSection: React.FC<Props> = ({
   };
 
   return (
-    <div className='relative flex h-fit flex-col justify-start lg:flex-row lg:p-10'>
+    <div className='relative flex h-fit flex-col-reverse justify-around lg:flex-row lg:p-10'>
       <div className='flex flex-col items-center py-10 lg:w-[40vw]'>
         <div
           className='mb-4 h-[50vh] w-[90%] rounded-3xl bg-neutral-5 bg-cover'
           style={{ border: '0' }}
         >
           <iframe
-            src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d178633.7464556669!2d-95.85650703773332!3d36.074828780412936!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87b68b8abffadfa9%3A0x27055814a51f3a45!2sZarn%20Automotive%20LLC!5e0!3m2!1sen!2sus!4v1715814075475!5m2!1sen!2sus'
+            src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d206181.47982743484!2d-95.8780104!3d36.1523015!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xadd67515501f50ad%3A0xe77378f24311d60a!2sTulsa%20Animal%20Rehab%20%26%20Wellness!5e0!3m2!1sen!2sus!4v1716221952283!5m2!1sen!2sus'
             className='h-full w-full rounded-3xl'
             loading='lazy'
             title={`Map of ${businessName}`}
@@ -78,7 +78,26 @@ const ContactSection: React.FC<Props> = ({
           </tbody>
         </table>
       </div>
-      <div className='h-50vh lg:w-[60vw] dark:bg-neutral-7'></div>
+      <div className='h-auto lg:w-[700px] rounded-3xl bg-primary-md1 dark:bg-neutral-7'>
+        <iframe
+          src='https://link.k9rehab.marketing/widget/form/EpYzueMnW7JQf73e9MIZ'
+          id='inline-EpYzueMnW7JQf73e9MIZ'
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type='alwaysShow'
+          data-trigger-value=''
+          data-activation-type='alwaysActivated'
+          data-activation-value=''
+          data-deactivation-type='neverDeactivate'
+          data-deactivation-value=''
+          data-form-name='Inquire about cost & availability- 1'
+          data-height='1149'
+          data-layout-iframe-id='inline-EpYzueMnW7JQf73e9MIZ'
+          data-form-id='EpYzueMnW7JQf73e9MIZ'
+          title='Inquire about cost & availability- 1'
+          className="h-full w-full"
+        ></iframe>
+        <script src='https://link.k9rehab.marketing/js/form_embed.js'></script>
+      </div>
     </div>
   );
 };

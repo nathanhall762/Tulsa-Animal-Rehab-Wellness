@@ -10,31 +10,27 @@ interface AboutCardProps {
 }
 
 const AboutCard: React.FC<AboutCardProps> = ({
-  content: {
-    heading: aboutTitle,
-    body_text: aboutBody,
-    link_text: linkText,
-    link_url: linkUrl,
-  },
+  content: { heading, body_text, link_text: linkText, link_url: linkUrl },
 }) => {
   return (
-    <div className='flex px-4 py-8 lg:py-16'>
-      <div className='mx-auto flex max-w-6xl justify-center rounded-3xl bg-neutral-7 px-6 py-8 text-center lg:px-16 lg:py-16'>
+    <div className='mx-2 flex my-8 lg:my-16'>
+      <div className='bg-transparent border-primary-md2 border-2 shadow-md shadow-primary-dk1 mx-auto flex max-w-6xl justify-center rounded-3xl px-6 py-8 text-center lg:px-16 lg:py-16 dark:bg-neutral-7'>
         <div className='flex max-w-5xl flex-col items-center justify-around align-baseline'>
-          <div className='pb-12'>
-            <h2 className='pb-4 text-2xl font-bold lg:text-3xl'>
-              {aboutTitle}
-            </h2>
-            <div className='m-auto h-[2px] w-[vw%] max-w-2xl bg-primary-md1'></div>
+          <h3 className='text-primary mb-4 text-lg text-neutral-9 lg:text-3xl dark:text-neutral-1'>
+            {heading}
+          </h3>
+          <div className='h-[2px] w-full max-w-2xl mb-8 bg-primary-md1'></div>
+          <div className='px-2 text-center mb-6 lg:mb-12 text-base lg:px-12 lg:text-left lg:text-lg'>
+            <p>{body_text}</p>
           </div>
-          <ReactMarkdown className='line-clamp-5 pb-12 text-start text-lg lg:line-clamp-3 lg:pb-24 lg:text-2xl'>
-            {aboutBody}
-          </ReactMarkdown>
-          <a className='transition duration-300 ease-in-out' href={linkUrl}>
-            <span className='cursor-pointer text-neutral-3 underline hover:text-primary-md3'>
+          {linkUrl && (
+            <a
+              href={linkUrl}
+              className='text-tertiary hover:text-primary-md1 text-sm underline underline-offset-4 transition-all  duration-300 lg:text-2xl'
+            >
               {linkText}
-            </span>
-          </a>
+            </a>
+          )}
         </div>
       </div>
     </div>

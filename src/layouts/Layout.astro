@@ -28,7 +28,7 @@ const businessInformation = await getData('business_information');
 <!doctype html>
 <html
   lang='en'
-  class='scroller bg-neutral-9 font-sans font-light text-neutral-9'>
+  class='scroller bg-neutral-1 dark:bg-neutral-8 font-sans font-light text-neutral-9'>
   <head>
     <meta charset='UTF-8' />
     <meta
@@ -43,20 +43,20 @@ const businessInformation = await getData('business_information');
       name='generator'
       content={Astro.generator}
     />
-    <script>
+    <!-- <script>
       if (
-        localStorage.theme === 'dark' ||
+        localStorage.theme === 'light' ||
         (!('theme' in localStorage) &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches)
+          window.matchMedia('(prefers-color-scheme: light)').matches)
       ) {
-        document.documentElement.classList.add('dark');
+        document.documentElement.classList.add('light');
       } else {
         document.documentElement.classList.remove('dark');
       }
       localStorage.theme = 'light';
-      localStorage.theme = 'dark';
+      // localStorage.theme = 'dark';
       localStorage.removeItem('theme');
-    </script>
+    </script> -->
     <link
       rel='icon'
       type='image/png'
@@ -72,8 +72,9 @@ const businessInformation = await getData('business_information');
     </title>
     <ViewTransitions />
   </head>
-  <body class='bg-ltbg2 dark:bg-dkbg2'>
+  <body class=''>
     <Header
+      businessName={businessInformation[0].business_name}
       phone={businessInformation[0].business_phone}
       address={businessInformation[0].business_address}
       addressLink={businessInformation[0].google_maps_link}
@@ -83,7 +84,7 @@ const businessInformation = await getData('business_information');
       logo={businessInformation[0].business_logo}
       client:load
     />
-    <main class='bg-neutral-8'>
+    <main class=''>
       <PageBuilder pageData={pageData} />
       <!-- <ReviewCards
         heading='Reviews'

@@ -1,6 +1,10 @@
 export const navs = [
 	{
 	  link: '/about',
-	  name: 'About Us',
+	  name: 'Meet the Team',
+	},
+	{
+	  link: '/rehab-services',
+	  name: 'Rehab Services',
 	},
   ];

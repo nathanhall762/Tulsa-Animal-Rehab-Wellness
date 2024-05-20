@@ -39,7 +39,7 @@ const Footer: React.FC<Props> = ({
     return phone;
   };
   return (
-    <footer className='bg-neutral-9 pb-8 pt-16 text-center text-neutral-1 lg:px-10 dark:bg-neutral-9 dark:text-neutral-1'>
+    <footer className='bg-neutral-1 dark:bg-neutral-8 pb-8 pt-16 text-center text-neutral-9 lg:px-10 dark:text-neutral-1'>
       <div className='flex flex-col items-center justify-evenly lg:flex-row lg:justify-between'>
         <div className='hidden lg:block'>
           {address && <p className='text-left'>{address}</p>}
@@ -58,7 +58,7 @@ const Footer: React.FC<Props> = ({
               </a>
             ))}
             <a href='/contact' className=''>
-              <button className='transform rounded-xl bg-primary-md2 px-4 py-2 text-lg text-neutral-1 transition duration-300 ease-in-out hover:scale-110 hover:bg-primary-md3'>
+              <button className='transform rounded-xl bg-primary-md2 px-4 py-2 text-lg text-neutral-9 transition duration-300 ease-in-out hover:scale-110 hover:bg-primary-md3'>
                 CONTACT US
               </button>
             </a>

@@ -5,6 +5,7 @@ import closeIcon from '@iconify/icons-mdi/close';
 import { initAnalytics } from '../../firebase';
 
 interface HeaderProps {
+  businessName: string;
   phone: string;
   address: string;
   email: string;
@@ -22,6 +23,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({
+  businessName,
   phone,
   address,
   email,
@@ -68,14 +70,14 @@ const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className=''>
-      <div className={`top-0 z-50 h-[15vh] bg-neutral-9`}></div>
+      <div className={`top-0 z-50 h-[9vh] bg-neutral-1 dark:bg-neutral-9`}></div>
       <div
-        className={`fixed top-0 z-50 w-full bg-neutral-9 transition-all duration-fast ease-in-out ${isScrolled ? 'h-[9vh]' : 'h-[15vh]'}`}
+        className={`fixed top-0 z-50 w-full bg-neutral-1 dark:bg-neutral-7 bg-opacity-80 dark:bg-opacity-50 backdrop-blur-md transition-all duration-fast ease-in-out`}
       >
         <div
-          className={`flex overflow-hidden border-neutral-6 text-xs transition-all duration-fast lg:flex-row-reverse ${isScrolled ? 'h-0 border-b-0' : 'h-[6vh] border-b-[1px]'}`}
+          className={`hidden h-[6vh]  overflow-hidden text-xs transition-all duration-fast lg:flex-row-reverse`}
         >
-          <div className='flex flex-grow items-center justify-center border-r-[1px] border-neutral-6'>
+          <div className='flex flex-grow items-center justify-center  '>
             <a
               className='group flex items-center justify-center gap-2 lg:gap-4'
               href={`mailto:${email}}`}
@@ -84,12 +86,12 @@ const Header: React.FC<HeaderProps> = ({
                 icon='mdi:email'
                 className='text-lg text-primary-md1 transition-all duration-fast group-hover:text-primary-md2'
               />
-              <span className='hidden text-center text-xs text-neutral-1 transition-all duration-fast group-hover:scale-md group-hover:underline lg:inline dark:text-neutral-1'>
+              <span className='hidden text-center text-xs text-neutral-9 transition-all duration-fast group-hover:scale-md group-hover:underline lg:inline dark:text-neutral-9'>
                 {email}
               </span>
             </a>
           </div>
-          <div className='flex flex-grow items-center justify-center border-r-[1px] border-neutral-6'>
+          <div className='flex flex-grow items-center justify-center  '>
             <a
               className='group flex items-center justify-center gap-2 lg:gap-4'
               href={addressLink}
@@ -99,12 +101,12 @@ const Header: React.FC<HeaderProps> = ({
                 icon='mdi:map-marker'
                 className='text-lg text-primary-md1 transition-all duration-fast group-hover:text-primary-md2'
               />
-              <span className='hidden text-center text-xs text-neutral-1 transition-all duration-fast group-hover:scale-md group-hover:underline lg:inline dark:text-neutral-1'>
+              <span className='hidden text-center text-xs text-neutral-9 transition-all duration-fast group-hover:scale-md group-hover:underline lg:inline dark:text-neutral-1'>
                 {address}
               </span>
             </a>
           </div>
-          <div className='flex flex-grow items-center justify-center border-neutral-6 lg:border-r-[1px]'>
+          <div className='lg: flex flex-grow items-center  justify-center'>
             <a
               className='group flex items-center justify-center gap-2 lg:gap-4'
               href={`tel:${phone}`}
@@ -113,7 +115,7 @@ const Header: React.FC<HeaderProps> = ({
                 icon='akar-icons:phone'
                 className='text-lg text-primary-md1 transition-all duration-fast group-hover:text-primary-md2'
               />
-              <span className=' text-neutral-1 transition-all duration-fast group-hover:scale-md group-hover:underline dark:text-neutral-1'>
+              <span className=' text-neutral-9 transition-all duration-fast group-hover:scale-md group-hover:underline dark:text-neutral-1'>
                 {formatPhoneNumber(phone)}
               </span>
             </a>
@@ -121,20 +123,30 @@ const Header: React.FC<HeaderProps> = ({
         </div>
 
         <div
-          className={`relative top-0 flex h-[9vh] justify-between text-center align-middle shadow-2xl transition-all duration-fast lg:grid lg:grid-cols-12`}
+          className={`relative top-0 flex h-[9vh] justify-between text-center align-middle
+          ${isScrolled ? 'shadow-md' : 'shadow-xl'}
+          transition-all duration-fast lg:grid lg:grid-cols-12`}
         >
-          <div className='relative flex flex-grow items-center justify-center border-r-[1px] border-neutral-6 bg-neutral-9 lg:col-span-2'>
-            <a href='/'>
-              <div className='hover:text-accent overflow-clip text-center text-neutral-1 transition-all duration-fast dark:text-neutral-1'>
-                <img src={logo} alt='logo' className='h-[8vh] py-2' />
+          <div className='relative flex w-full flex-row   lg:col-span-3'>
+            <a
+              href='/'
+              className='px-4 flex w-full flex-row items-center justify-center gap-4'
+            >
+              <div className='hover:text-accent overflow-clip text-center text-neutral-9 transition-all duration-fast dark:text-neutral-1'>
+                <img src={logo} alt='logo' className='h-[6vh] w-[6vh] lg:w-auto' />
               </div>
+              {businessName && (
+                <h1 className='text-sm lg:text-lg text-primary-md1 lg:flex'>
+                  {businessName}
+                </h1>
+              )}
             </a>
           </div>
-          <nav className='hidden items-center justify-center gap-[1.4vw] border-r-[1px] border-neutral-6 align-middle lg:col-span-8  lg:flex xl:col-span-7'>
+          <nav className='hidden items-center justify-end gap-[1.4vw] align-middle lg:col-span-8  lg:flex xl:col-span-7'>
             {navs.map((nav) => (
               <div key={nav.name} className='group relative'>
                 <a
-                  className='text-bold text-sm text-neutral-1 transition duration-fast ease-in-out hover:text-primary-md2 dark:text-neutral-1'
+                  className='text-bold text-neutral-9 transition duration-fast ease-in-out hover:text-primary-md1 dark:text-neutral-1'
                   href={`${nav.link}`}
                 >
                   {nav.name}
@@ -145,7 +157,7 @@ const Header: React.FC<HeaderProps> = ({
                       <a
                         key={subpage.name}
                         href={`${nav.link}${subpage.link}`}
-                        className='min-w-[20vw] bg-neutral-9 px-6 py-2 text-start text-sm text-neutral-1 hover:text-primary-md2 dark:bg-neutral-9 dark:text-neutral-1'
+                        className='min-w-[20vw] bg-neutral-1 px-6 py-2 text-start text-sm text-neutral-9 hover:text-primary-md2 dark:bg-neutral-9 dark:text-neutral-1'
                       >
                         {subpage.name}
                       </a>
@@ -157,19 +169,19 @@ const Header: React.FC<HeaderProps> = ({
           </nav>
           <div
             onClick={toggleNav}
-            className={`z-50 flex w-20 cursor-pointer items-center justify-center text-2xl text-neutral-1 transition-transform duration-fast lg:hidden dark:text-neutral-1 ${isNavOpen ? 'rotate-180 opacity-100' : 'rotate-0 opacity-100'}`}
+            className={`z-50 flex w-20 cursor-pointer items-center justify-center text-2xl text-neutral-9 transition-transform duration-fast lg:hidden dark:text-neutral-1 ${isNavOpen ? 'rotate-180 opacity-100' : 'rotate-0 opacity-100'}`}
           >
             {isNavOpen ? <Icon icon={closeIcon} /> : <Icon icon={menuIcon} />}
           </div>
           <div
             className={`absolute left-0 top-full z-50 w-full transform py-4 pt-0 shadow-md transition-transform duration-fast lg:hidden ${isNavOpen ? 'scale-y-100' : 'scale-y-0'} ${isScrolled ? 'h-[94vh]' : 'h-[90vh]'} origin-top transition-transform duration-fast ease-in-out`}
           >
-            <nav className='flex h-full flex-col bg-neutral-9 dark:bg-neutral-9'>
+            <nav className='flex h-full flex-col bg-neutral-1 dark:bg-neutral-9'>
               {navs.map((nav, index) => (
                 <a
                   key={index}
                   href={`${nav.link}`}
-                  className='px-6 py-4 text-base text-neutral-1 dark:bg-neutral-9 dark:text-neutral-1'
+                  className='px-6 py-4 text-base text-neutral-9 dark:bg-neutral-9 dark:text-neutral-1'
                 >
                   {nav.name}
                 </a>
@@ -184,8 +196,8 @@ const Header: React.FC<HeaderProps> = ({
               </a>
             </nav>
           </div>
-          <div className='hidden px-4 text-sm lg:col-span-2 lg:flex lg:justify-around xl:col-span-3'>
-            <div className='group hidden cursor-pointer items-center justify-center gap-[1.4vw] self-center xl:flex'>
+          <div className='hidden px-4 text-sm lg:col-span-2 lg:flex lg:justify-around xl:col-span-2'>
+            {/* <div className='group hidden cursor-pointer items-center justify-center gap-[1.4vw] self-center xl:flex'>
               <a
                 href='tel:TELEPHONE_NUMBER_GOES_HERE'
                 className='group hidden cursor-pointer items-center justify-center gap-[1.4vw] self-center xl:flex'
@@ -194,13 +206,13 @@ const Header: React.FC<HeaderProps> = ({
                   icon='akar-icons:phone'
                   className='text-lg text-primary-md1 transition-all duration-fast group-hover:text-primary-md2'
                 />
-                <span className='hidden text-justify text-neutral-1 transition-all duration-fast group-hover:scale-md group-hover:underline xl:inline dark:text-neutral-1'>
+                <span className='hidden text-justify text-neutral-9 transition-all duration-fast group-hover:scale-md group-hover:underline xl:inline dark:text-neutral-1'>
                   {formatPhoneNumber(phone)}
                 </span>
               </a>
-            </div>
+            </div> */}
             <a href='/contact' className='flex self-center'>
-              <button className='transform rounded-xl bg-primary-md1 px-4 py-2 text-neutral-1 transition duration-fast ease-in-out hover:scale-sm hover:bg-primary-md2'>
+              <button className='transform rounded-xl bg-primary-md1 px-4 py-2 text-neutral-1 hover:font-bold transition duration-fast ease-in-out hover:scale-sm hover:bg-primary-md2'>
                 <span className=''>CONTACT US</span>
               </button>
             </a>
